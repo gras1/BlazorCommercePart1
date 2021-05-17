@@ -1,0 +1,12 @@
+::deep .shop-sidebar .single-widget.category .categor-list a.currentcategory::before {
+    content: "\e661";
+    font-family: 'themify';
+    color: #5C2D91;
+    font-weight: bold;
+    float: left;
+    margin-left: -17px;
+}
+
+::deep .shop-sidebar .single-widget.category .categor-list a.currentcategory {
+    color: #5C2D91;
+}
