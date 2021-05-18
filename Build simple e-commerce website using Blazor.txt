@@ -1,88 +1,112 @@
 https://github.com/gras1/BlazorCommercePart1
 Build simple e-commerce website using Blazor
 
-1. Create a Blazor Commerce folder
-2. Create the Blazor Commerce logo using https://www.freelogodesign.org/
-3. Open the Blazor Commerce folder in VS Code
-4. From a Terminal Window:
-dotnet new blazorwasm -f net5.0 -o BlazorCommerce
-5. In Terminal Window, cd in to the new BlazorCommerce folder and type
-dotnet run
-In a browser go to http://localhost:5000 or https://localhost:5001
-Close the browser and press Ctrl + C to stop running the website
-6. Create an images folder under wwwroot and move the Blazor Commerce logo in to it
-7. Download Eshop website template from ThemeHunt: https://themehunt.com/item/1527642-eshop-ecommerce-html5-template
-8. Remove the contents of the wwwroot/css folder and replace with the contents of the template css folder
-9. Delete the sample-data folder
-10. Add a js folder to wwwroot and copy all the template javascript files in to it
-11. Replace the <head> section in wwwroot/index.html - with the <head> section from the template/index.html leaving the <div id="app"> , <div id="blazor-error-ui"> and <script src="_framework/blazor.webassembly.js"></script>
-12. Be sure to add <base href="/" /> in the <head> section in wwwroot/index.html otherwise site navigation doesn't work
-13. Add the class="js" to the body tag
-14. under the <script src="_framework/blazor.webassembly.js"></script> add the javascript references from the template/index.html
-15. Replace the Loading... in wwwroot/index.html with the preloader div and its contents from template/index.html
-16. Remove the contents of Shared/MainLayout.razor leaving the @inherits and @Body
-17. Copy the rest of the content out of template/index.html (from the header to end of the footer area) in to Shared/MainLayout.razor, delete the free-version-banner section
-18. In the shared folder delete MainLayout.razor.css, NavMenu.razor, NavMenu.razor.css and SurveyPrompt.razor
-19. Delete the content of pages/index.razor except for the @page directive
-20. In Shared/MainLayout.razor "cut" the content of Slider Area to End Shop Blog and "paste" it into pages/index.razor below the @page directive
-21. Move the @body directive in Shared/MainLayout.razor to between the End Small Banner and Start Shop Home List
-22. In the pages folder delete Counter.razor and FeatchData.razor
-23. Copy styles.css from the root of the template folder to wwwroot/css
-24. Update wwwroot/index.html from <link rel="stylesheet" href="style.css"> to <link rel="stylesheet" href="css/style.css">
-25. To view the changes, in the Terminal Window type
+1. This project will be called Blazor Commerce
+
+2. Created a website logo using https://www.freelogodesign.org and save it to your computer, be sure to name it logo.png
+
+3. Open Visual Studio Code
+
+4. Open a Terminal Window
+
+5. type cd\ to go back to root and then cd in to the projects folder
+
+6. type "md BlazorCommerce" and hit return to create the project folder, then cd in to this folder
+
+7. type "dotnet new blazorwasm -f net5.0 -o BlazorCommerce"
+
+8. We will explore the contents of this by opening the folder in VSCode, say 'yes' if you get a prompt to add missing required assets to build
+ and debug in VSCode which will create a .vscode folder
+
+9. We can see what this Blazor template looks like by typing dotnet run in the Terminal Window
+[when finished press Ctrl+C to stop the website running]
+ , we will be using an e-commerce website template
+
+10. The final version will be based on an e-commerce template which I purchased from wpthemesgrid.com
+https://wpthemesgrid.com/downloads/eshop-ecommerce-html5-template/
+[demonstrate home, Shop Grid, Shop Single, update shopping cart]
+
+11. Create an images folder under wwwroot and move the Blazor Commerce logo in to it
+
+12. Now we start butchering the website in favour of the template. Start by removing the contents of the wwwroot/css folder and put the
+ contents from the template css folder in it
+
+13. Delete the sample-data folder
+
+14. Add a js folder to wwwroot and copy all the template javascript files in to it
+[mention that ultimately we will reference CDN versions of the JavaScript files]
+
+15. Replace the <head> section in wwwroot/index.html - with the <head> section from the template/index.html leaving the <div id="app"> ,
+ <div id="blazor-error-ui"> and <script src="_framework/blazor.webassembly.js"></script>
+[from the DOCTYPE declaration down to and including the <link rel="stylesheet" href="css/responsive.css">]
+
+16. Add a class of "js" to the body tag
+
+17. Be sure to add <base href="/" /> in the <head> section in wwwroot/index.html otherwise site navigation doesn't work
+[replace the duplicated meta http-equiv tag]
+
+18. under the <script src="_framework/blazor.webassembly.js"></script> add the javascript references from the template/index.html
+
+19. Replace the Loading... in wwwroot/index.html with the preloader div and its contents from template/index.html
+
+20. Remove the contents of Shared/MainLayout.razor leaving the @inherits and @Body
+
+21. Copy the rest of the content out of template/index.html in to Shared/MainLayout.razor, delete the free-version-banner section
+[from <!-- Header --> to <!-- /End Footer Area -->]
+
+22. In the shared folder delete MainLayout.razor.css, NavMenu.razor, NavMenu.razor.css and SurveyPrompt.razor
+
+23. Delete the content of pages/index.razor except for the @page directive
+
+24. In Shared/MainLayout.razor "cut" the content of Slider Area to End Shop Blog and "paste" it into pages/index.razor below the @page directive
+
+25. Move the @body directive in Shared/MainLayout.razor to between the <!--/ End Header --> and <!-- Start Shop Services Area --> html comments
+
+26. In the pages folder delete Counter.razor and FetchData.razor
+
+27. Copy style.css from the root of the template folder to wwwroot/css
+
+28. Update wwwroot/index.html of the line that reads:
+<link rel="stylesheet" href="style.css">
+to: <link rel="stylesheet" href="css/style.css">
+
+29. To view the changes, in the Terminal Window type
 dotnet run
 In a browser go to http://localhost:5000 or https://localhost:5001
 Structurally the website is coming along and requires a few tweaks to the styling. Namely replacing the orange colour with the purple colour of the logo.
-26. Replace all instances of the color: #f7941d and #f6931d with #5C2D91
-27. Copy the template/fonts folder to wwwroot
-Creating a new page
-28. Create an empty file called Cart.razor under the Pages folder
-29. On line 1 add the code:
-@page "/cart"
-30. Copy the content out of template/cart.html (from the breadcrumbs to end shopping cart) in to Pages/Cart.razor
-31. In MainLayout.razor, alter the line that reads
-<li><a href="cart.html">Cart</a></li>
-to
-<li><a href="/cart">Cart</a></li>
-32. In MainLayout.razor, alter the line that reads
-<a href="#">View Cart</a>
-to
-<a href="/cart">View Cart</a>
-33. In MainLayout.razor, alter the line that reads
-<a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a>
-to
-<a href="/cart" class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a>
-34. Copy out of template/images map-marker.png, payment-method.png and payments.png in to wwwroot/images
-35. Remove the <div class="logo"> immediately under <div class="single-footer about">
+
+30. We need to replace the dominant orange colour with the purple colour of the logo, in wwwroot/style.css replace all instances of the color: #f7941d and #f6931d with #5C2D91
+
+31. Create a fonts folder in wwwroot and then copy the contents of the template/fonts folder in to it
+
+32. In the Pages folder create a new file called Category.razor
+
+33. At the top of Pages/Category.razor put the code from "1. Category.razor snippet.txt"
+[The friendlyCategoryUrl passed in on the url is stored in the parameter. Note that values passed in this way must be set as public Parameters]
+
+34. From the shop-grid.html page in the template copy the content between the lines that read:
+<!-- Breadcrumbs -->
+and:
+<!--/ End Product Style 1  -->
+then paste it after the @page directive and before the @code section
+
+35. To view the changes, in the Terminal Window type
 dotnet run
 In a browser go to http://localhost:5000 or https://localhost:5001
-If you switch between the home page and the cart page, there are clear differences with the header navigation.
-To manage the different header navigation layouts we need to use state by means of NotifyStateChanged
-36. In the BlazorCommerce root folder, create a new file called AppState.cs with the following contents:
-using System;
+Flick between the index page and the /category/test, the Category drop down menu is obscuring the breadcrumb and the categories menu
 
-namespace BlazorCommerce
-{
-    public class AppState
-    {
-        public bool DisplayCategoryMenuInHeaderNav { get; private set; }
+36. To manage the different header navigation layouts, after extensive research and lots of trial and error we need to use state by means
+ of NotifyStateChanged. In the BlazorCommerce root folder, create a new file called AppState.cs with the contents from the file "2. AppState snippet.txt"
 
-        public event Action OnChange;
-
-        public void SetDisplayCategoryMenuInHeaderNav(bool displayCategoryMenuInHeaderNav)
-        {
-            DisplayCategoryMenuInHeaderNav = displayCategoryMenuInHeaderNav;
-            NotifyStateChanged();
-        }
-
-        private void NotifyStateChanged() => OnChange?.Invoke();
-    }
-}
-37. This will need to be injected in to the application in Program.cs, add the following above the line that reads await builder.Build().RunAsync();
+37. This will need to be injected in to the application in Program.cs add:
 builder.Services.AddScoped<AppState>();
+above the line that reads:
+await builder.Build().RunAsync();
+
 38. In Shared/MainLayout.razor add the following immediately below @inherits LayoutComponentBase
 @inject AppState AppState
 @implements IDisposable
+
 39. In Shared/MainLayout.razor change the code that reads:
 <div class="cat-nav-head">
 	<div class="row">
@@ -95,6 +119,7 @@ to:
 		{
 		<div class="col-lg-3">
 			<div class="all-category">
+
 40. In Shared/MainLayout.razor change the code that reads:
                     </div>
                 </div>
@@ -106,27 +131,9 @@ to:
 		}
                 <div class="col-lg-9 col-12">
                     <div class="menu-area">
-41. At the bottom of Shared/MainLayout.razor add the following:
-@code {
-	private string GetMenuAreaContainerClass()
-	{
-		if (AppState.DisplayCategoryMenuInHeaderNav)
-        {
-            return "col-lg-9 ";
-        }
-		return string.Empty;
-	}
 
-	protected override void OnInitialized()
-    {
-        AppState.OnChange += StateHasChanged;
-    }
+41. At the bottom of Shared/MainLayout.razor add the code from "3. MainLayout.razor StateHasChanged snippet.txt"
 
-    public void Dispose()
-    {
-        AppState.OnChange -= StateHasChanged;
-    }
-}
 42. In Shared/MainLayout.razor change the code that reads:
                     </div>
                 </div>
@@ -139,847 +146,212 @@ to:
                 }
                 <div class='@GetMenuAreaContainerClass() col-12'>
                     <div class="menu-area">
-43. At the bottom of Pages/Cart.razor add the following:
-@code {
-	public override async Task SetParametersAsync(ParameterView parameters)
-	{
-		AppState.SetDisplayCategoryMenuInHeaderNav(false);
-		await base.SetParametersAsync(parameters);
-	}
-}
+
+43. At the top of Pages/Category.razor just under the line that reads: @inherits LayoutComponentBase
+add:
+@inject AppState AppState
+
+44. At the bottom of Pages/Category.razor in the @code section add the code from "4. Category.razor SetParametersAsync snippet.txt"
+
 45. In all razor files, replace <a href="index1.html"> and <a href="index.html"> with <a href="/">
+
 46. In Shared/MainLayout.razor change the line of code that reads:
-<li class="active"><a href="#">Home</a></li>
+<li class="active"><a href="#">Home<i class="ti-angle-down"></i></a>
 with:
-<li class="active"><a href="/">Home</a></li>
+<li class="active"><a href="/">Home<i class="ti-angle-down"></i></a>
+
 47. Delete from wwwroot/index.html the line that reads:
 <script src="js/jquery-migrate-3.0.0.js"></script>
 and delete jquery-migrate-3.0.0.js from the wwwroot/js folder
-48. In wwwroot/index.html replace the line that reads:
-<script src="js/jquery.min.js"></script>
-with:
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
-and delete jquery.min.js from the wwwroot/js folder
-49. In wwwroot/index.html replace the line that reads:
-<script src="js/jquery-ui.min.js"></script>
-with:
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous"></script>
-and delete jquery-ui.min.js from the wwwroot/js folder
-49. In wwwroot/index.html replace the line that reads:
-<script src="js/popper.min.js"></script>
-with:
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js" integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g==" crossorigin="anonymous"></script>
-and delete popper.min.js from the wwwroot/js folder
-50. In wwwroot/index.html replace the line that reads:
-<script src="js/bootstrap.min.js"></script>
-with:
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-and delete bootstrap.min.js from the wwwroot/js folder
-51. In wwwroot/index.html replace the line that reads:
-<script src="js/flex-slider.js"></script>
-with:
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.2/jquery.flexslider.min.js" integrity="sha512-DMVsZXgX4yFXz69Stig0g783PuBnl245OQV2qj5gSHTVUAuSeqRolBbaqiungKghnEPYee081WTTN6WA4BPYww==" crossorigin="anonymous"></script>
-and delete flex-slider.js from the wwwroot/js folder
-52. In wwwroot/index.html replace the line that reads:
-<script src="js/nicesellect.js"></script>
-with:
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js" integrity="sha512-NqYds8su6jivy1/WLoW8x1tZMRD7/1ZfhWG/jcRQLOzV1k1rIODCpMgoBnar5QXshKJGV7vi0LXLNXPoFsM5Zg==" crossorigin="anonymous"></script>
-and delete nicesellect.js from the wwwroot/js folder
-53. In wwwroot/index.html replace the line that reads:
-<script src="js/waypoints.min.js"></script>
-with:
-<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js" integrity="sha512-CEiA+78TpP9KAIPzqBvxUv8hy41jyI3f2uHi7DGp/Y/Ka973qgSdybNegWFciqh6GrN2UePx2KkflnQUbUhNIA==" crossorigin="anonymous"></script>
-and delete waypoints.min.js from the wwwroot/js folder
-54. In wwwroot/index.html replace the line that reads:
-<script src="js/slicknav.min.js"></script>
-with:
-<script src="https://cdnjs.cloudflare.com/ajax/libs/SlickNav/1.0.10/jquery.slicknav.min.js" integrity="sha512-FmCXNJaXWw1fc3G8zO3WdwR2N23YTWDFDTM3uretxVIbZ7lvnjHkciW4zy6JGvnrgjkcNEk8UNtdGTLs2GExAw==" crossorigin="anonymous"></script>
-and delete slicknav.min.js from the wwwroot/js folder
-55. In wwwroot/index.html replace the lines that read:
-<script src="js/easing.js"></script>
-<script src="js/active.js"></script>
-with:
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js" integrity="sha512-0QbL0ph8Tc8g5bLhfVzSqxe9GERORsKhIn1IrpxDAgUsbBGz/V7iSav2zzW325XGd1OMLdL4UiqRJj702IeqnQ==" crossorigin="anonymous"></script>
-<!--<script src="js/active.js"></script>-->
-and delete easing.js from the wwwroot/js folder
-56. In wwwroot/index.html replace the line that reads:
-<script src="js/finalcountdown.js"></script>
-with:
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.countdown/2.2.0/jquery.countdown.min.js" integrity="sha512-lteuRD+aUENrZPTXWFRPTBcDDxIGWe5uu0apPEn+3ZKYDwDaEErIK9rvR0QzUGmUQ55KFE2RqGTVoZsKctGMVw==" crossorigin="anonymous"></script>
-and delete finalcountdown.js from the wwwroot/js folder
-57. In wwwroot/index.html replace the line that reads:
-<script src="js/scrollup.js"></script>
-with:
-<script src="https://cdnjs.cloudflare.com/ajax/libs/scrollup/2.4.1/jquery.scrollUp.min.js" integrity="sha512-gAHP1RIzRzolApS3+PI5UkCtoeBpdxBAtxEPsyqvsPN950Q7oD+UT2hafrcFoF04oshCGLqcSgR5dhUthCcjdA==" crossorigin="anonymous"></script>
-and delete scrollup.js from the wwwroot/js folder
-58. In wwwroot/index.html replace the line that reads:
-<script src="js/owl-carousel.js"></script>
-with:
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous"></script>
-and delete owl-carousel.js from the wwwroot/js folder
-59. In wwwroot/index.html replace the line that reads:
-<script src="js/magnific-popup.js"></script>
-with:
-<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js" integrity="sha512-IsNh5E3eYy3tr/JiX2Yx4vsCujtkhwl7SLqgnwLNgf04Hrt9BT9SXlLlZlWx+OK4ndzAoALhsMNcCmkggjZB1w==" crossorigin="anonymous"></script>
-and delete magnific-popup.js from the wwwroot/js folder
-60. In wwwroot/index.html replace the line that reads:
-<script src="js/onepage-nav.min.js"></script>
-with:
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-one-page-nav/3.0.0/jquery.nav.min.js" integrity="sha512-I1SRWCuHnqVwlUXfm2TNMDduALHE1LfFpbQtFPY2z33Jy0iJAEXBDgrRrBLbpVChGclfCB0Hfy0F8wLVJtIVPQ==" crossorigin="anonymous"></script>
-and delete onepage-nav.min.js from the wwwroot/js folder
-61. Delete the following unused javascript files in the wwwroot/js folder:
+
+48. In wwwroot/index.html replace all the JavaScript "js" folder references just above the closing body tag with CDN references,
+ copy and paste from "5. JavaScript CDN References snippet.txt"
+
+49. Delete the following files from the wwwroot/js folder leaving only active.js:
+jquery.min.js
+jquery-ui.min.js
+popper.min.js
+bootstrap.min.js
+flex-slider.js
+nicesellect.js
+waypoints.min.js
+slicknav.min.js
+easing.js
+finalcountdown.js
+scrollup.js
+owl-carousel.js
+magnific-popup.js
+onepage-nav.min.js
 facnybox.min.js
 gmap.min.js
 map-script.js
 ytplayer.min.js
+colors.js
 
-dotnet run
-In a browser go to http://localhost:5000 or https://localhost:5001
-If you switch between the home page and the cart page the differences in the header navigation remain but is now decided dynamically. There should be no errors in the console.
-
-62. In wwwroot/index.html replace the line that reads:
-<link rel="stylesheet" href="css/bootstrap.css">
-with:
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" integrity="sha512-P5MgMn1jBN01asBgU0z60Qk4QxiXo86+wlFahKrsQf37c9cro517WzVSPPV1tDKzhku2iJ2FVgL67wG03SGnNA==" crossorigin="anonymous" />
-and delete bootstrap.css from the wwwroot/css folder
-63. In wwwroot/index.html replace the line that reads:
-<link rel="stylesheet" href="css/magnific-popup.min.css">
-with:
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" integrity="sha512-+EoPw+Fiwh6eSeRK7zwIKG2MA8i3rV/DGa3tdttQGgWyatG/SkncT53KHQaS5Jh9MNOT3dmFL0FjTY08And/Cw==" crossorigin="anonymous" />
-and delete magnific-popup.min.css from the wwwroot/css folder
-64. In wwwroot/index.html replace the line that reads:
-<link rel="stylesheet" href="css/font-awesome.css">
-with:
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-and delete font-awesome.css from the wwwroot/css folder
-65. In wwwroot/index.html replace the line that reads:
-<link rel="stylesheet" href="css/jquery.fancybox.min.css">
-with:
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" />
-and delete jquery.fancybox.min.css from the wwwroot/css folder
-66. In wwwroot/index.html replace the line that reads:
-<link rel="stylesheet" href="css/niceselect.css">
-with:
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ==" crossorigin="anonymous" />
-and delete niceselect.css from the wwwroot/css folder
-67. In wwwroot/index.html replace the line that reads:
-<link rel="stylesheet" href="css/animate.css">
-with:
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw==" crossorigin="anonymous" />
-and delete animate.css from the wwwroot/css folder
-68. In wwwroot/index.html replace the line that reads:
-<link rel="stylesheet" href="css/flex-slider.min.css">
-with:
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.2/flexslider.min.css" integrity="sha512-c7jR/kCnu09ZrAKsWXsI/x9HCO9kkpHw4Ftqhofqs+I2hNxalK5RGwo/IAhW3iqCHIw55wBSSCFlm8JP0sw2Zw==" crossorigin="anonymous" />
-and delete flex-slider.min.css from the wwwroot/css folder
-69. In wwwroot/index.html replace the line that reads:
-<link rel="stylesheet" href="css/owl-carousel.css">
-with:
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" />
-and delete owl-carousel.css from the wwwroot/css folder
-70. In wwwroot/index.html replace the line that reads:
-<link rel="stylesheet" href="css/slicknav.min.css">
-with:
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/SlickNav/1.0.10/slicknav.min.css" integrity="sha512-heyoieAHmpAL3BdaQMsbIOhVvGb4+pl4aGCZqWzX/f1BChRArrBy/XUZDHW9WVi5p6pf92pX4yjkfmdaIYa2QQ==" crossorigin="anonymous" />
-and delete slicknav.min.css from the wwwroot/css folder
-
-dotnet run
-In a browser go to http://localhost:5000 or https://localhost:5001
-The styling should be correct and there should be no errors in the console.
-
-71. Create a new file called Category.razor
-72. At the top of this file we want to state what routes this page will handle
-@page "/category/{friendlyCategoryUrl}"
+50. At the top of Pages/Index.razor just under the line that reads: @page "/"
+add:
 @inject AppState AppState
-73.  At the bottom of Pages/Category.razor add the following:
-@code {
-	[Parameter] public string friendlyCategoryUrl { get; set; }
 
-	public override async Task SetParametersAsync(ParameterView parameters)
-	{
-		AppState.SetDisplayCategoryMenuInHeaderNav(false);
-		await base.SetParametersAsync(parameters);
-	}
-}
-72. Go to https://wpthemesgrid.com/themes/eshop/shop-grid.html and inspect the page source
-73. Copy the contents to the clipboard of the html between the lines that read:
+51. At the bottom of Pages/Index.razor add the code from "6. Index.razor SetParametersAsync snippet.txt"
+
+52. In wwwroot/index.html replace all the Stylesheet "css" folder references within the head tag with CDN references,
+ copy and paste from "7. StyleSheet CDN References snippet.txt"
+
+53. Delete the following files from the wwwroot/css folder:
+color folder
+bootstrap.css
+magnific-popup.css
+magnific-popup.min.css
+jquery.ui.css
+jquery.fancybox.min.css
+nice-select.css
+niceselect.css
+font-awesome.css
+animate.css
+flex-slider.min.css
+owl-carousel.css
+slicknav.min.css
+
+54. To view the changes, in the Terminal Window type
+dotnet run
+In a browser go to http://localhost:5000 or https://localhost:5001
+If you go to the home page the category menu is visible but isn't if you go to /category/test. Notice as you scroll down the page the header
+ is no longer fixed at the web page - don't worry this will be fixed later.
+
+55. Create a new file in the Pages folder called Product.razor
+
+56. The category menu shouldn't be displayed on this page, go ahead and copy the code from "8. Initial code for Product.razor snippet.txt"
+
+57. From the shop-single.html page in the template, copy the content between the lines that read:
 <!-- Breadcrumbs -->
 and:
-<!--/ End Product Style 1  -->
-then paste it in between the @page directive and @code directive in Pages/Category.razor
-74. Replace "index1.html" with "/" in Pages/Category.razor
-75. In Pages/Index.razor replace the lines that read:
-<h1><span>UP TO 50% OFF </span>Shirt For Man</h1>
-<p>Maboriosam in a nesciung eget magnae <br> dapibus disting tloctio in the find it pereri <br> odiy maboriosm.</p>
-<div class="button">
-	<a href="#" class="btn">Shop Now!</a>
-</div>
-with:
-<h1><span>UP TO 50% OFF </span>Shirts For Men</h1>
-<p>Maboriosam in a nesciung eget magnae <br> dapibus disting tloctio in the find it pereri <br> odiy maboriosm.</p>
-<div class="button">
-	<a href="/category/mens-shirts" class="btn">Shop Now!</a>
-</div>
-76. In Pages/Index.razor replace the lines that read:
-<div class="content">
-	<p>Man's Collectons</p>
-	<h3>Summer travel <br> collection</h3>
-	<a href="#">Discover Now</a>
-</div>
-with:
-<div class="content">
-	<p>Men's Collectons</p>
-	<h3>Summer travel <br> collection</h3>
-	<a href="/category/mens-summer-travel">Discover Now</a>
-</div>
-77. In Pages/Index.razor replace the lines that read:
-<div class="content">
-	<p>Bag Collectons</p>
-	<h3>Awesome Bag <br> 2020</h3>
-	<a href="#">Shop Now</a>
-</div>
-with:
-<div class="content">
-	<p>Bag Collectons</p>
-	<h3>Awesome Bag <br> 2020</h3>
-	<a href="/category/bags">Shop Now</a>
-</div>
-78. In Pages/Index.razor replace the lines that read:
-<div class="content">
-	<p>Flash Sale</p>
-	<h3>Mid Season <br> Up to <span>40%</span> Off</h3>
-	<a href="#">Discover Now</a>
-</div>
-with:
-<div class="content">
-	<p>Flash Sale</p>
-	<h3>Mid Season <br> Up to <span>40%</span> Off</h3>
-	<a href="/category/flash-sale">Discover Now</a>
-</div>
-79. In Pages/Index.razor replace the lines that read:
-<div class="content">
-	<p>Man's Collectons</p>
-	<h3>Man's items <br>Up to<span> 50%</span></h3>
-	<a href="#">Shop Now</a>
-</div>
-with:
-<div class="content">
-	<p>Men's Watches</p>
-	<h3>Watches <br>Up to<span> 50%</span> off</h3>
-	<a href="/category/mens-watches">Shop Now</a>
-</div>
-80. In Pages/Index.razor replace the lines that read:
-<div class="content">
-	<p>shoes women</p>
-	<h3>mid season <br> up to <span>70%</span></h3>
-	<a href="#" class="btn">Shop Now</a>
-</div>
-with:
-<div class="content">
-	<p>Women's Shoes</p>
-	<h3>mid season <br> up to <span>70%</span> off</h3>
-	<a href="/category/womens-shoes" class="btn">Shop Now</a>
-</div>
-81. In Shared/MainLayout.razor replace the lines that read:
-<li><a href="#">New Arrivals <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-	<ul class="sub-category">
-		<li><a href="#">accessories</a></li>
-		<li><a href="#">best selling</a></li>
-		<li><a href="#">top 100 offer</a></li>
-		<li><a href="#">sunglass</a></li>
-		<li><a href="#">watch</a></li>
-		<li><a href="#">man’s product</a></li>
-		<li><a href="#">ladies</a></li>
-		<li><a href="#">westrn dress</a></li>
-		<li><a href="#">denim </a></li>
-	</ul>
-</li>
-with:
-<li><a href="/category/new-arrivals">New Arrivals <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-	<ul class="sub-category">
-		<li><a href="/category/new-accessories">accessories</a></li>
-		<li><a href="/category/new-sunglasses">sunglasses</a></li>
-		<li><a href="/category/new-watches">watches</a></li>
-		<li><a href="/category/new-mens">mens</a></li>
-		<li><a href="/category/new-ladies">ladies</a></li>
-	</ul>
-</li>
-82. In Shared/MainLayout.razor replace the lines that read:
-<a href="#" class="title-link">Shop Kid's</a>
-with:
-<a href="/category/kids" class="title-link">Shop Kid's</a>
-83. In Shared/MainLayout.razor replace the lines that read:
-<div class="inner-link">
-	<a href="#">Kids Toys</a>
-	<a href="#">Kids Travel Car</a>
-	<a href="#">Kids Color Shape</a>
-	<a href="#">Kids Tent</a>
-</div>
-with:
-<div class="inner-link">
-	<a href="/category/kids-toys">Toys</a>
-	<a href="/category/kids-games">Games</a>
-	<a href="/category/back-to-school">Back to School</a>
-	<a href="/category/kids-arts-and-crafts">Arts and Crafts</a>
-</div>
-84. In Shared/MainLayout.razor replace the lines that read:
-<a href="#" class="title-link">Shop Men's</a>
-with:
-<a href="/category/mens" class="title-link">Shop Men's</a>
-85. In Shared/MainLayout.razor replace the lines that read:
-<div class="inner-link">
-	<a href="#">Watch</a>
-	<a href="#">T-shirt</a>
-	<a href="#">Hoodies</a>
-	<a href="#">Formal Pant</a>
-</div>
-with:
-<div class="inner-link">
-	<a href="/category/mens-watches">Watches</a>
-	<a href="/category/mens-tshirt">T-shirts</a>
-	<a href="/category/mens-hoodies">Hoodies</a>
-	<a href="/category/mens-trousers">Trousers</a>
-</div>
-86. In Shared/MainLayout.razor replace the lines that read:
-<a href="#" class="title-link">Shop Women's</a>
-with:
-<a href="/category/womens" class="title-link">Shop Women's</a>
-87. In Shared/MainLayout.razor replace the lines that read:
-<div class="inner-link">
-	<a href="#">Ladies Shirt</a>
-	<a href="#">Ladies Frog</a>
-	<a href="#">Ladies Sun Glass</a>
-	<a href="#">Ladies Watch</a>
-</div>
-with:
-<div class="inner-link">
-	<a href="/category/womens-blouses">Blouses</a>
-	<a href="/category/womens-dresses">Dresses</a>
-	<a href="/category/womens-sunglasses">Sun Glasses</a>
-	<a href="/category/womens-watches">Watches</a>
-</div>
-88. In Shared/MainLayout.razor replace the lines that read:
-<li><a href="#">accessories</a></li>
-<li><a href="#">top 100 offer</a></li>
-<li><a href="#">sunglass</a></li>
-<li><a href="#">watch</a></li>
-<li><a href="#">man’s product</a></li>
-<li><a href="#">ladies</a></li>
-<li><a href="#">westrn dress</a></li>
-<li><a href="#">denim </a></li>
-with:
-<li><a href="/category/accessories">accessories</a></li>
-<li><a href="/category/womens">women's clothes</a></li>
-<li><a href="/category/sunglasses">sunglasses</a></li>
-<li><a href="/category/watches">watches</a></li>
-<li><a href="/category/mens">men's clothes</a></li>
-<li><a href="/category/kids-clothes">kids clothes</a></li>
-<li><a href="/categories/seasonal">seasonal</a></li>
-<li><a href="/categories/shoes">shoes</a></li>
-
-dotnet run
-In a browser go to http://localhost:5000 or https://localhost:5001
-All category links should now navigate to the category page
-
-89. Create a new file called Product.razor
-90. At the top of this file we want to state what routes this page will handle
-@page "/product/{friendlyProductUrl}"
-@inject AppState AppState
-91.  At the bottom of Pages/Product.razor add the following:
-@code {
-	[Parameter] public string friendlyProductUrl { get; set; }
-
-	public override async Task SetParametersAsync(ParameterView parameters)
-	{
-		AppState.SetDisplayCategoryMenuInHeaderNav(false);
-		await base.SetParametersAsync(parameters);
-	}
-}
-92. Go to https://wpthemesgrid.com/themes/eshop/shop-single.html and inspect the page source
-93. Copy the contents to the clipboard of the html between the lines that read:
-<!-- Bradcrumbs -->
-and
 <!-- End Most Popular Area -->
-then paste it in between the @page directive and @code directive in Pages/Product.razor
-94. In Pages/Product.razor replace the lines that read:
+then paste it after @inject AppState AppState and before the @code section in Pages/Product.razor
+
+58. In Pages/Product.razor replace the lines that read:
 <li><a href="index1.html">Home<i class="ti-arrow-right"></i></a></li>
 with:
 <li><a href="/">Home<i class="ti-arrow-right"></i></a></li>
-95. In Pages/Category.razor replace the lines that read:
-<h5><a href="#">Girls Dress</a></h5>
-with:
-<h5><a href="/product/kids-clothes/girls-dress1">Girl's Dress</a></h5>
-96. In Pages/Category.razor replace the lines that read:
-<h5><a href="#">Women Clothings</a></h5>
-with:
-<h5><a href="/product/womens/womans-dress1">Woman's Dress</a></h5>
-97. In Pages/Category.razor replace the lines that read:
-<h5><a href="#">Man Tshirt</a></h5>
-with:
-<h5><a href="/product/mens-tshirt/mans-tshirt1">Man's T-Shirt</a></h5>
-98. In Pages/Category.razor replace the lines that read:
-<a href="product-details.html"><img class="default-img" src="images/products/p1.jpg" alt="#"> <img class="hover-img" src="images/products/p2.jpg" alt="#"></a>
-and:
-<h3><a href="product-details.html">Women Hot Collection</a></h3>
-with:
-<a href="/category/mens-watches/menssportswatch1"><img class="default-img" src="images/products/p1.jpg" alt="#"> <img class="hover-img" src="images/products/p2.jpg" alt="#"></a>
-and:
-<h3><a href="/category/mens-watches/menssportswatch1">Men's Sports Watch</a></h3>
-99. In Pages/Category.razor replace the lines that read:
-<a href="product-details.html"><img class="default-img" src="images/products/p3.jpg" alt="#"> <img class="hover-img" src="images/products/p4.jpg" alt="#"></a>
-and:
-<h3><a href="product-details.html">Awesome Pink Show</a></h3>
-with:
-<a href="/product/womens-dresses/summerdress1"><img class="default-img" src="images/products/p3.jpg" alt="#"> <img class="hover-img" src="images/products/p4.jpg" alt="#"></a>
-and:
-<h3><a href="/product/womens-dresses/summerdress1">Women's Summer Dress</a></h3>
-100. In Pages/Category.razor replace the lines that read:
-<a href="product-details.html"><img class="default-img" src="images/products/p5.jpg" alt="#"> <img class="hover-img" src="images/products/p6.jpg" alt="#"></a>
-and:
-<h3><a href="product-details.html">Awesome Bags Collection</a></h3>
-with:
-<a href="/product/womens-bags/casual1"><img class="default-img" src="images/products/p5.jpg" alt="#"> <img class="hover-img" src="images/products/p6.jpg" alt="#"></a>
-and:
-<h3><a href="/product/womens-bags/casual1">Women's Casual Handbag</a></h3>
-101. In Pages/Category.razor replace the lines that read:
-<a href="product-details.html"><img class="default-img" src="images/products/p7.jpg" alt="#"> <img class="hover-img" src="images/products/p8.jpg" alt="#"> <span class="new">New</span></a>
-and:
-<h3><a href="product-details.html">Women Pant Collectons</a></h3>
-with:
-<a href="/product/womens/trousers1"><img class="default-img" src="images/products/p7.jpg" alt="#"> <img class="hover-img" src="images/products/p8.jpg" alt="#"> <span class="new">New</span></a>
-and:
-<h3><a href="/product/womens/trousers1">Women's Professional Suit Trousers</a></h3>
-102. In Pages/Category.razor replace the lines that read:
-<a href="product-details.html"><img class="default-img" src="images/products/p9.jpg" alt="#"> <img class="hover-img" src="images/products/p10.jpg" alt="#"></a>
-and:
-<h3><a href="product-details.html">Awesome Bags Collection</a></h3>
-with:
-<a href="/product/womens-bags/leather1"><img class="default-img" src="images/products/p9.jpg" alt="#"> <img class="hover-img" src="images/products/p10.jpg" alt="#"></a>
-and:
-<h3><a href="/product/womens-bags/leather1">Women's Luxury Leather Handbag</a></h3>
-103. In Pages/Category.razor replace the lines that read:
-<a href="product-details.html"><img class="default-img" src="images/products/p11.jpg" alt="#"> <img class="hover-img" src="images/products/p12.jpg" alt="#"> <span class="price-dec">30% Off</span></a>
-and:
-<h3><a href="product-details.html">Awesome Cap For Women</a></h3>
-with:
-<a href="/product/shoes/womensbuckledflat1"><img class="default-img" src="images/products/p11.jpg" alt="#"> <img class="hover-img" src="images/products/p12.jpg" alt="#"> <span class="price-dec">30% Off</span></a>
-and:
-<h3><a href="/product/shoes/womensbuckledflat1">Women's Buckled Flat Shoe</a></h3>
-104. In Pages/Category.razor replace the lines that read:
-<a href="product-details.html"><img class="default-img" src="images/products/p13.jpg" alt="#"> <img class="hover-img" src="images/products/p14.jpg" alt="#"></a>
-and:
-<h3><a href="product-details.html">Polo Dress For Women</a></h3>
-with:
-<a href="/category/mens-watches/menschronographleatherstrapwatch1"><img class="default-img" src="images/products/p13.jpg" alt="#"> <img class="hover-img" src="images/products/p14.jpg" alt="#"></a>
-and:
-<h3><a href="/category/mens-watches/menschronographleatherstrapwatch1">Men's Chronograph Leather Strap Watch</a></h3>
-105. In Pages/Category.razor replace the lines that read:
-<a href="product-details.html"><img class="default-img" src="images/products/p15.jpg" alt="#"> <img class="hover-img" src="images/products/p16.jpg" alt="#"> <span class="out-of-stock">Hot</span></a>
-and:
-<h3><a href="product-details.html">Black Sunglass For Women</a></h3>
-with:
-<a href="/product/sunglasses/womenselegant1"><img class="default-img" src="images/products/p15.jpg" alt="#"> <img class="hover-img" src="images/products/p16.jpg" alt="#"> <span class="out-of-stock">Hot</span></a>
-and:
-<h3><a href="/product/sunglasses/womenselegant1">Women's Elegant Glossy Sunglasses</a></h3>
-106. In Pages/Category.razor replace the lines that read:
-<a href="product-details.html"><img class="default-img" src="images/products/p7.jpg" alt="#"> <img class="hover-img" src="images/products/p8.jpg" alt="#"> <span class="new">New</span></a>
-and:
-<h3><a href="product-details.html">Women Pant Collectons</a></h3>
-with:
-<a href="/product/kids-clothes/toddlerboyshoodie1"><img class="default-img" src="images/products/p7.jpg" alt="#"> <img class="hover-img" src="images/products/p8.jpg" alt="#"> <span class="new">New</span></a>
-and:
-<h3><a href="/product/kids-clothes/toddlerboyshoodie1">Toddler Boy's Hoodie</a></h3>
 
+59. To view the changes, in the Terminal Window type
 dotnet run
-In a browser go to http://localhost:5000 or https://localhost:5001
-All product links on the category page should now navigate to the product page
+In a browser go to http://localhost:5000/product/test or https://localhost:5001/product/test
+to see what this page looks like, you will notice that the image slider isn't working correctly, we'll fix this later
 
-107. in the Terminal window go up one level to the Blazor Commerce root folder, then type:
+60. Now we will populate these pages dynamically, in the Terminal window go up one level to the BlazorCommerce root folder, then type:
 dotnet new classlib -f net5.0 -n BlazorCommerce.Data
-108. cd in to the BlazorCommerce.Data folder, then type:
+
+61. Now we will populate these pages dynamically, in the Terminal window go up one level to the BlazorCommerce root folder, then type:
+dotnet new classlib -f net5.0 -n BlazorCommerce.Shared
+
+62. For now, we will use a SQLite database for rapid prototyping, cd in to the BlazorCommerce.Data folder, then type:
 dotnet add package Microsoft.Data.Sqlite
 dotnet add package Microsoft.Extensions.Options
-109. in the Terminal window go up one level to the Blazor Commerce root folder, then type:
-dotnet new console -f net5.0 -n BlazorCommerce.DbSetup
-110. in the Terminal window cd in to the BlazorCommerce.DbSetup folder, then type:
-dotnet add package Microsoft.Data.Sqlite
-111. Open the file Program.cs in BlazorCommerce.DbSetup project folder and change the entire contents of the file to be:
-using Microsoft.Data.Sqlite;
 
-namespace BlazorCommerce.DbSetup
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var connectionStringBuilder = new SqliteConnectionStringBuilder();
-            //If DB does not exist, create it
-            connectionStringBuilder.DataSource = "../BlazorCommerce.Data/BlazorCommerce.db";
-            using (var connection = new SqliteConnection(connectionStringBuilder.ConnectionString))
-            {
-                connection.Open();
-                var delTableCmd1 = connection.CreateCommand();
-                delTableCmd1.CommandText = "DROP TABLE IF EXISTS Categories";
-                delTableCmd1.ExecuteNonQuery();
-                var delTableCmd2 = connection.CreateCommand();
-                delTableCmd2.CommandText = "DROP TABLE IF EXISTS CategoryTypes";
-                delTableCmd2.ExecuteNonQuery();
-                var createTableCmd1 = connection.CreateCommand();
-                createTableCmd1.CommandText = "CREATE TABLE CategoryTypes(Id INTEGER PRIMARY KEY ASC, Name VARCHAR(20) NOT NULL)";
-                createTableCmd1.ExecuteNonQuery();
-                using (var transaction = connection.BeginTransaction())
-                {
-                    var insertCmd = connection.CreateCommand();
-                    insertCmd.CommandText = "INSERT INTO CategoryTypes VALUES(1, 'Hero')";
-                    insertCmd.ExecuteNonQuery();
-                    insertCmd.CommandText = "INSERT INTO CategoryTypes VALUES(2, 'Small Banner')";
-                    insertCmd.ExecuteNonQuery();
-                    insertCmd.CommandText = "INSERT INTO CategoryTypes VALUES(3, 'Midium Banner')";
-                    insertCmd.ExecuteNonQuery();
-                    transaction.Commit();
-                }
-                var createTableCmd2 = connection.CreateCommand();
-                createTableCmd2.CommandText = "CREATE TABLE Categories(Id INTEGER PRIMARY KEY ASC, Name VARCHAR(100) NOT NULL, CategoryTypeId INTEGER NOT NULL, FriendlyUrl VARCHAR(100) NOT NULL, ImageUrl VARCHAR(100), OfferText VARCHAR(100), MarketingText VARCHAR(250), ActionButtonText VARCHAR(20), FOREIGN KEY(CategoryTypeId) REFERENCES CategoryTypes(Id))";
-                createTableCmd2.ExecuteNonQuery();
-                using (var transaction = connection.BeginTransaction())
-                {
-                    var insertCmd = connection.CreateCommand();
-                    insertCmd.CommandText = "INSERT INTO Categories VALUES(1, 'Men''s Shirts', 1, 'mens-shirts', 'https://via.placeholder.com/600x370', '_-UP TO 50% OFF -_Shirts For Men', 'Maboriosam in a nesciung eget magnae __ dapibus disting tloctio in the find it pereri __ odiy maboriosm.', 'Shop Now!')";
-                    insertCmd.ExecuteNonQuery();
-                    insertCmd.CommandText = "INSERT INTO Categories VALUES(2, 'Men''s Summer Travel Collection', 2, 'mens-summer-travel', 'https://via.placeholder.com/600x370', NULL, 'Summer travel __ collection', 'Discover Now')";
-                    insertCmd.ExecuteNonQuery();
-                    insertCmd.CommandText = "INSERT INTO Categories VALUES(3, 'Bags', 2, 'bags', 'https://via.placeholder.com/600x370', NULL, 'Awesome Bag __ 2020', 'Shop Now')";
-                    insertCmd.ExecuteNonQuery();
-                    insertCmd.CommandText = "INSERT INTO Categories VALUES(4, 'Flash Sale', 2, 'flash-sale', 'https://via.placeholder.com/600x370', NULL, 'Mid Season __ Up to _-40%-_ Off', 'Discover Now')";
-                    insertCmd.ExecuteNonQuery();
-                    insertCmd.CommandText = "INSERT INTO Categories VALUES(5, 'Men''s Watches', 3, 'mens-watches', 'https://via.placeholder.com/600x370', NULL, 'Watches __Up to_- 50%-_ off', 'Shop Now')";
-                    insertCmd.ExecuteNonQuery();
-                    insertCmd.CommandText = "INSERT INTO Categories VALUES(6, 'Women''s Watches', 3, 'womens-shoes', 'https://via.placeholder.com/600x370', NULL, 'mid season __ up to _-70%-_ off', 'Shop Now')";
-                    insertCmd.ExecuteNonQuery();
-                    transaction.Commit();
-                }
-            }
-        }
-    }
-}
-112. in the Terminal window, if you are not already in the BlazorCommerce.DbSetup folder cd in to the BlazorCommerce.DbSetup folder, then type "dotnet run". This will create a SQLite database called BlazorCommerce.db in the BlazorCommerce.Data folder with two tables, CategoryType and Category. The category type is used to determine where on the index page
-you can actually do dotnet run against the Program.cs file in over and over and it will update the database everytime accordingly.
-113. in the Terminal window go up one level to the Blazor Commerce root folder, then type:
-dotnet new classlib -f net5.0 -n BlazorCommerce.Shared
-114. now type:
+63. in the Terminal window go up one level to the Blazor Commerce root folder, then type:
+dotnet new console -f net5.0 -n BlazorCommerce.DbSetup
+
+64. in the Terminal window cd in to the BlazorCommerce.DbSetup folder, then type:
+dotnet add package Microsoft.Data.Sqlite
+
+65. in the Terminal window go up one level to the Blazor Commerce root folder, then type:
 dotnet new webapi -f net5.0 -n BlazorCommerce.Api
-115. now type:
+
+66. now we are going to create a solution file, in the Terminal window type:
 dotnet new sln --name BlazorCommerce.sln
+
+67. using "9. Solution File Project References snippet.txt" we are going to add project references to the solution file,
+ in the Terminal window type:
 dotnet sln add ./BlazorCommerce/BlazorCommerce.csproj
 dotnet sln add ./BlazorCommerce.Api/BlazorCommerce.Api.csproj
 dotnet sln add ./BlazorCommerce.Data/BlazorCommerce.Data.csproj
 dotnet sln add ./BlazorCommerce.DbSetup/BlazorCommerce.DbSetup.csproj
 dotnet sln add ./BlazorCommerce.Shared/BlazorCommerce.Shared.csproj
-116. now type:
+
+68. using "10. Inter Project References snippet.txt" we are going to add the inter project references, in the Terminal window type:
 dotnet add ./BlazorCommerce/BlazorCommerce.csproj reference ./BlazorCommerce.Shared/BlazorCommerce.Shared.csproj
 dotnet add ./BlazorCommerce.Data/BlazorCommerce.Data.csproj reference ./BlazorCommerce.Shared/BlazorCommerce.Shared.csproj
 dotnet add ./BlazorCommerce.Api/BlazorCommerce.Api.csproj reference ./BlazorCommerce.Data/BlazorCommerce.Data.csproj ./BlazorCommerce.Shared/BlazorCommerce.Shared.csproj
-117. rename Class1.cs in BlazorCommerce.Shared to be CategoryDto.cs and then replace the content with:
-namespace BlazorCommerce.Shared
-{
-    public class CategoryDto
-    {
-        public int Id {get;set;}
 
-        public string Name {get;set;}
+69. Open the file Program.cs in BlazorCommerce.DbSetup project folder and overwrite the contents with the code from "11. Program.cs snippet.txt"
+ This code generates the final version of the database, I did debate whether to build the database up bit-by-bit. It can be run and re-run at any time
 
-        public int CategoryTypeId {get;set;}
-
-        public string FriendlyUrl {get;set;}
-
-        public string ImageUrl {get;set;}
-
-        public string OfferText {get;set;}
-        
-        public string MarketingText {get;set;}
-        
-        public string ActionButtonText {get;set;}
-    }
-}
-117. Add a new class file called IDataModel.cs to BlazorCommerce.Shared with the content:
-namespace BlazorCommerce.Shared
-{
-    public interface IDataModel
-    {
-        int Id {get;set;}
-    }
-}
-118. rename Class1.cs in BlazorCommerce.Data to be DatabaseOptions.cs and then replace the content with:
-namespace BlazorCommerce.Data
-{
-    public class DatabaseOptions
-    {
-        public string ConnectionString { get; set; }
-    }
-}
-119. Add a new class file called IRepository.cs in BlazorCommerce.Data with the content:
-using System.Collections.Generic;
-
-namespace BlazorCommerce.Data
-{
-    public interface IRepository<T>
-    {
-        IEnumerable<T> GetAll();
-    }
-}
-120. Add a new class file called IRepository.cs in BlazorCommerce.Data with the content:
-using Microsoft.Extensions.Options;
-
-namespace BlazorCommerce.Data
-{
-    public class BaseRepository
-    {
-        private readonly DatabaseOptions _options;
-
-        public BaseRepository(IOptions<DatabaseOptions> databaseOptions)
-        {
-            _options = databaseOptions.Value;
-        }
-
-        public string ConnectionString
-        {
-            get 
-            {
-                return _options.ConnectionString;
-            }
-        }
-    }
-}
-121. Add a new class file called CategoryRepository.cs in BlazorCommerce.Data with the content:
-using System.Collections.Generic;
-using BlazorCommerce.Shared;
-using Microsoft.Extensions.Options;
-using Microsoft.Data.Sqlite;
-
-namespace BlazorCommerce.Data
-{
-    public class CategoryRepository : BaseRepository, IRepository<CategoryDto>
-    {
-        public CategoryRepository(IOptions<BlazorCommerce.Data.DatabaseOptions> databaseOptions) : base(databaseOptions) { }
-
-        public IEnumerable<CategoryDto> GetAll()
-        {
-            var categories = new List<CategoryDto>();
-            using (var con = new SqliteConnection(base.ConnectionString))
-            {
-                con.Open();
-
-                string stm = "SELECT * FROM Categories;";
-
-                using (var cmd = new SqliteCommand(stm, con))
-                {
-                    using (var rdr = cmd.ExecuteReader())
-                    {
-                        while (rdr.Read())
-                        {
-                            var category = new CategoryDto()    
-                            {    
-                                Id = rdr.GetInt32(rdr.GetOrdinal("Id")),
-                                Name = rdr.GetString(rdr.GetOrdinal("Name")),
-                                CategoryTypeId = rdr.GetInt32(rdr.GetOrdinal("CategoryTypeId")),
-                                FriendlyUrl = rdr.GetString(rdr.GetOrdinal("FriendlyUrl")),
-                                ImageUrl = rdr.IsDBNull(rdr.GetOrdinal("ImageUrl")) ? null : rdr.GetString(rdr.GetOrdinal("ImageUrl")),
-                                OfferText = rdr.IsDBNull(rdr.GetOrdinal("OfferText")) ? null : rdr.GetString(rdr.GetOrdinal("OfferText")),
-                                MarketingText = rdr.IsDBNull(rdr.GetOrdinal("MarketingText")) ? null : rdr.GetString(rdr.GetOrdinal("MarketingText")),
-                                ActionButtonText = rdr.IsDBNull(rdr.GetOrdinal("ActionButtonText")) ? null : rdr.GetString(rdr.GetOrdinal("ActionButtonText")),
-                            };
-                            categories.Add(category);
-                        }
-                    }
-                }
-
-                con.Close();
-            }
-            return categories;
-        }
-    }
-}
-122. Update appsettings.json with the content:
-{
-  "Logging": {
-    "LogLevel": {
-      "Default": "Information",
-      "Microsoft": "Warning",
-      "Microsoft.Hosting.Lifetime": "Information"
-    }
-  },
-  "AllowedHosts": "*",
-  "DatabaseOptions": {
-    "ConnectionString": "Data Source=C:\\Projects\\Blazor Commerce\\BlazorCommerce.Data\\BlazorCommerce.db"
-  }
-}
-123. Update Startup.cs in BlazorCommerce.Api with the content:
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
-using BlazorCommerce.Data;
-
-namespace BlazorCommerce.Api
-{
-    public class Startup
-    {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
-
-        public IConfiguration Configuration { get; }
-
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "BlazorCommerce.Api", Version = "v1" });
-            });
-            services.Configure<BlazorCommerce.Data.DatabaseOptions>(Configuration.GetSection("DatabaseOptions"));
-            services.AddScoped<BlazorCommerce.Data.IRepository<BlazorCommerce.Shared.CategoryDto>, CategoryRepository>();
-        }
-
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BlazorCommerce.Api v1"));
-            }
-
-            app.UseHttpsRedirection();
-
-            app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
-        }
-    }
-}
-124. rename WeatherForecastController.cs in BlazorCommerce.Api to be CategoryController.cs and then replace the content with:
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using BlazorCommerce.Data;
-using BlazorCommerce.Shared;
-
-namespace BlazorCommerce.Api.Controllers
-{
-    [ApiController]
-    public class CategoryController : ControllerBase
-    {
-        private readonly ILogger<CategoryController> _logger;
-        
-        private readonly IRepository<CategoryDto> _categoryRepository;
-
-        public CategoryController(ILogger<CategoryController> logger, IRepository<CategoryDto> categoryRepository)
-        {
-            _logger = logger;
-            _categoryRepository = categoryRepository;
-        }
-
-        [HttpGet]
-	[Route("~/category")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult<IEnumerable<CategoryDto>> Get()
-        {
-            IEnumerable<CategoryDto> categories;
-            try
-            {
-                categories = _categoryRepository.GetAll();
-            }
-            catch
-            {
-                return new StatusCodeResult(StatusCodes.Status500InternalServerError);
-            }
-            return Ok(categories);
-        }
-    }
-}
-125. Delete the file WeatherForecast.cs
-126. In properties/launchSettings.json in BlazorCommerce.Api replace the line that reads:
-"applicationUrl": "https://localhost:5001;http://localhost:5000",
-with:
-"applicationUrl": "https://localhost:5005;http://localhost:5004",
-127. cd in to the BlazorCommerce.Api folder, then type:
-
+70. To create the database, in the Terminal window in to the BlazorCommerce.DbSetup folder, then type:
 dotnet run
-In a browser go to http://localhost:5004/category or https://localhost:5005/category
-A list of categories should be retrieved and displayed in the browser
+This will create/overwrite the database in the BlazorCommerce.Data folder
+[Take people through how the database is constructed and how it is populated]
 
-We now need to make calls to the api from the blazor webassembly components to retrieve categories
-128. In BlazorCommerce/Program.cs the HttpClient registration needs to be altered so that it reads:
+71. I decided that the data layer implement the Repository pattern, but in the end it wasn't the right decision mainly because 
+ the resulting code ended up failing the "I" of SOLID principals (interface segregation), but time was against me and I didn't want to
+ re-write the implementation steps at this stage - for Part 2. Also whilst I was rehearsing it became apparent that I wouldn't have the time
+ to go through every step of getting the database and API and SQLite setup whilst the focus should be on Blazor. So for now delete the
+ class1.cs files in BlazorCommerce.Shared and BlazorCommerce.Data, delete the WeatherForecast.cs file in BlazorCommerce.Api and
+ delete the WeatherForecastController.cs file in BlazorCommerce.Api/Controllers folder
+
+72. From the Code Snippets folder copy the BlazorCommerce.Shared folder and overwrite the BlazorCommerce.Shared folder and its contents
+
+73. From the Code Snippets folder copy the BlazorCommerce.Data folder and overwrite the BlazorCommerce.Data folder and its contents
+
+74. From the Code Snippets folder copy the BlazorCommerce.Api folder and overwrite the BlazorCommerce.Api folder and its contents
+[Take folks through the code, point out the CORs settings in Startup.cs]
+
+75. We need to check that the Api runs correctly, can connect to the database and returns results. In the Terminal window go to
+ the BlazorCommerce.Api folder and type:
+dotnet run
+Open a browser and go to https://localhost:5005/category/featuredcategories
+
+75. We are going to make the Hero category on the Home page of the website dynamic. In BlazorCommerce/Program.cs the HttpClient
+ registration needs to be altered so that it reads:
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:5005/")});
-129. In BlazorCommerce/Pages/Index.razor, just below the line that reads @inject AppState AppState
+
+76. In BlazorCommerce/Pages/Index.razor, just below the line that reads @inject AppState AppState
 add:
 @using System.Net.Http
 @inject HttpClient Http
-130. In the @code section of BlazorCommerce/Pages/Index.razor add a new private member, this will be used to populate the "hero" category:
+
+77. In the @code section of BlazorCommerce/Pages/Index.razor add a new private member, this will be used to populate the "hero" category:
 private BlazorCommerce.Shared.CategoryDto _heroCategory;
-131. In the @code section of BlazorCommerce/Pages/Index.razor add a call to the BlazorCommerce API in the OnInitializedAsync method to retrieve the categories and then filter to the hero category:
-protected override async Task OnInitializedAsync() {
-	var categories = await Http.GetFromJsonAsync<BlazorCommerce.Shared.CategoryDto[]>("category");
-	_heroCategory = categories.SingleOrDefault(cat => cat.CategoryTypeId == 1);
-}
-132. If you try running the website and the api at the moment, there is a problem with CORS, to get around this in BlazorCommerce.Api/Startup.cs add the following code at the bottom of ConfigureServices method:
-services.AddCors(options =>
-{
-	options.AddPolicy(
-		"Open",
-		builder => builder.AllowAnyOrigin().AllowAnyHeader());
-}); 
-133. Additionally, in BlazorCommerce.Api/Startup.cs add the following code at the bottom of Configure method in between the lines of code that read app.UseRouting(); and app.UseAuthorization();:
-app.UseCors("Open");
-134. Now we will populate the hero category section in the html. In BlazorCommerce/Pages/Index.razor above the line that reads <!-- Slider Area --> add:
+
+78. In the @code section of BlazorCommerce/Pages/Index.razor add a call to the BlazorCommerce API in the OnInitializedAsync method
+ to retrieve the categories and then filter to the hero category from "12. Index.razor OnInitializedAsync snippet.txt"
+
+79. Now we will populate the hero category section in the html. In BlazorCommerce/Pages/Index.razor above the line that reads
+ <!-- Slider Area --> add:
 @if (_heroCategory != null)
 {
 and after the line that reads <!--/ End Slider Area --> add:
 }
-135. Add a new method in the @code section of BlazorCommerce/Pages/Index.razor to conduct the string replacements __ to <br> _- to <span> and -_ to </span>:
-protected string DoPlaceholderReplacements(string source)
-{
-	return source.Replace("__", "<br>").Replace("_-", "<span>").Replace("-_", "</span>");
-}
-136. In BlazorCommerce/Pages/Index.razor change the lines that read:
+
+80. Add a new method in the @code section of BlazorCommerce/Pages/Index.razor to conduct the string replacements
+ __ to <br> _- to <span> and -_ to </span> "13. Index.razor DoPlaceholderReplacements snippet.txt"
+
+81. In BlazorCommerce/Pages/Index.razor change the lines that read:
 <h1><span>UP TO 50% OFF </span>Shirts For Men</h1>
 <p>Maboriosam in a nesciung eget magnae <br> dapibus disting tloctio in the find it pereri <br> odiy maboriosm.</p>
 <div class="button">
 	<a href="/category/mens-shirts" class="btn">Shop Now!</a>
 </div>
-to:
-<h1>@((MarkupString)DoPlaceholderReplacements(_heroCategory.OfferText))</h1>
-<p>@((MarkupString)DoPlaceholderReplacements(_heroCategory.MarketingText))</p>
-<div class="button">
-	<a href="category/@_heroCategory.FriendlyUrl" class="btn">@_heroCategory.ActionButtonText</a>
-</div>
-137. Now we will populate the small banner category section in the html. In the @code section of BlazorCommerce/Pages/Index.razor add a new private member, this will be used to populate the small banner categories:
+to what is in "14. Index.razor Hero Category snippet.txt"
+
+82. In the Terminal window cd in to BlazorCommerce and type dotnet run
+In another Terminal window cd in to BlazorCommerce.Api and type dotnet run
+In a browser go to https://localhost:5001 and the index page should appear and the Hero category should be dynamic and when you click
+ it should go to the category page - although that isn't dynamic yet.
+
+83. Now we will populate the small banner category section in the html. In the @code section of BlazorCommerce/Pages/Index.razor add
+ a new private member, this will be used to populate the small banner categories:
 private IEnumerable<BlazorCommerce.Shared.CategoryDto> _smallBannerCategories;
-138. In BlazorCommerce/Pages/Index.razor under the line of code that reads _heroCategory = categories.SingleOrDefault(cat => cat.CategoryTypeId == 1); add:
+
+84. In BlazorCommerce/Pages/Index.razor under the line of code that populates _heroCategory add:
 _smallBannerCategories = categories.Where(cat => cat.CategoryTypeId == 2);
-139. In BlazorCommerce/Pages/Index.razor under the <!-- Start Small Banner --> replace the first instance of the lines that read:
+
+85. In BlazorCommerce/Pages/Index.razor under the <!-- Start Small Banner --> replace the first instance of the lines that read:
 <div class="row">
 	<!-- Single Banner  -->
 	<div class="col-lg-4 col-md-6 col-12">
-change this to read:
-<div class="row">
-	@if (_smallBannerCategories != null && _smallBannerCategories.Any())
-	{
-		foreach (var smallBannerCategory in _smallBannerCategories)
-		{
-			<!-- Single Banner  -->
-			<div class="col-lg-4 col-md-6 col-12">
-140. In BlazorCommerce/Pages/Index.razor replace the first instance of the lines that read:
+change this with "15. Index.razor Single Banner Category snippet.txt"
+
+86. In BlazorCommerce/Pages/Index.razor replace the first instance of the lines that read:
 	</div>
 	<!-- /End Single Banner  -->
 </div>
@@ -989,38 +361,32 @@ change this to read:
 		}
 	}
 </div>
-141. Delete the repeated small banner <!-- Single Banner  --> sections in BlazorCommerce/Pages/Index.razor
-142. In BlazorCommerce/Pages/Index.razor replace the lines that read:
+
+87. Delete the repeated small banner <!-- Single Banner  --> sections in BlazorCommerce/Pages/Index.razor
+
+88. In BlazorCommerce/Pages/Index.razor replace the lines that read:
 <img src="https://via.placeholder.com/600x370" alt="#">
 <div class="content">
 	<p>Men's Collectons</p>
 	<h3>Summer travel <br> collection</h3>
-	<a href="/category/mens-summer-travel">Discover Now</a>
+	<a href="#">Discover Now</a>
 </div>
-with:
-<img src="@smallBannerCategory.ImageUrl" alt="#">
-<div class="content">
-	<p>@((MarkupString)DoPlaceholderReplacements(smallBannerCategory.Name))</p>
-	<h3>@((MarkupString)DoPlaceholderReplacements(smallBannerCategory.MarketingText))</h3>
-	<a href="category/@smallBannerCategory.FriendlyUrl">@smallBannerCategory.ActionButtonText</a>
-</div>
-143. Now we will populate the midium banner category section in the html. In the @code section of BlazorCommerce/Pages/Index.razor add a new private member, this will be used to populate the small banner categories:
+with "16. Index.razor Single Banner Categories snippet.txt"
+
+89. Now we will populate the midium banner category section in the html. In the @code section of BlazorCommerce/Pages/Index.razor add
+ a new private member, this will be used to populate the small banner categories:
 private IEnumerable<BlazorCommerce.Shared.CategoryDto> _midiumBannerCategories;
-144. In BlazorCommerce/Pages/Index.razor under the line of code that reads _smallBannerCategories = categories.Where(cat => cat.CategoryTypeId == 2); add:
-_midiumBannerCategories = categories.Where(cat => cat.CategoryTypeId == 3);
-145. In BlazorCommerce/Pages/Index.razor under the <!-- Start Midium Banner --> replace the first instance of the lines that read:
+
+90. In BlazorCommerce/Pages/Index.razor under the line of code that populates _smallBannerCategories add:
+_midiumBannerCategories = categories.Where(cat => cat.CategoryType == 3);
+
+91. In BlazorCommerce/Pages/Index.razor under the <!-- Start Midium Banner --> replace the first instance of the lines that read:
 <div class="row">
 	<!-- Single Banner  -->
 	<div class="col-lg-6 col-md-6 col-12">
-change this to read:
-<div class="row">
-	@if (_midiumBannerCategories != null && _midiumBannerCategories.Any())
-	{
-		foreach (var midiumBannerCategory in _midiumBannerCategories)
-		{
-			<!-- Single Banner  -->
-				<div class="col-lg-6 col-md-6 col-12">
-146. In BlazorCommerce/Pages/Index.razor replace the first instance of the lines that read:
+change this to "17. Index.razor Midium Banner Category snippet.txt"
+
+92. In BlazorCommerce/Pages/Index.razor replace the first instance of the lines that read:
 	</div>
 	<!-- /End Single Banner  -->
 </div>
@@ -1030,242 +396,52 @@ change this to read:
 		}
 	}
 </div>
-147. Delete the repeated midium banner <!-- Single Banner  --> sections in BlazorCommerce/Pages/Index.razor
-148. In BlazorCommerce/Pages/Index.razor replace the lines that read:
+
+93. Delete the repeated midium banner <!-- Single Banner  --> sections in BlazorCommerce/Pages/Index.razor
+
+94. In BlazorCommerce/Pages/Index.razor replace the lines that read:
 <img src="https://via.placeholder.com/600x370" alt="#">
 <div class="content">
 	<p>Men's Watches</p>
 	<h3>Watches <br>Up to<span> 50%</span> off</h3>
-	<a href="/category/mens-watches">Shop Now</a>
+	<a href="#">Shop Now</a>
 </div>
-with:
-<img src="@midiumBannerCategory.ImageUrl" alt="#">
-<div class="content">
-	<p>@((MarkupString)DoPlaceholderReplacements(midiumBannerCategory.Name))</p>
-	<h3>@((MarkupString)DoPlaceholderReplacements(midiumBannerCategory.MarketingText))</h3>
-	<a href="category/@midiumBannerCategory.FriendlyUrl">@midiumBannerCategory.ActionButtonText</a>
-</div>
+with "18. Index.razor Midium Banner Categories snippet.txt"
 
-In the Terminal window cd in to BlazorCommerce and type dotnet run
+95. In the Terminal window cd in to BlazorCommerce and type dotnet run
 In another Terminal window cd in to BlazorCommerce.Api and type dotnet run
-In a browser go to https://localhost:5001 and the index page should appear and the various sections that have been made dynamic should all appear fine.
+In a browser go to https://localhost:5001 and the index page should appear and the various sections that have been made dynamic should
+ all appear fine.
 
-Now to return specific category information on the category page
-
-149. Add the following line of code to BlazorCommerce.Data/IRepository.cs:
-T Get(string friendlyUrl);
-150. Add the following line of code to BlazorCommerce.Data/CategoryRepository.cs: 
-public CategoryDto Get(string friendlyUrl)
-{
-	CategoryDto category = null;
-
-	using (var con = new SqliteConnection(base.ConnectionString))
-	{
-		con.Open();
-
-		string stm = "SELECT * FROM Categories WHERE FriendlyUrl = '" + friendlyUrl + "';";
-
-		using (var cmd = new SqliteCommand(stm, con))
-		{
-			using (var rdr = cmd.ExecuteReader())
-			{
-				while (rdr.Read())
-				{
-					category = new CategoryDto()    
-					{
-						Id = rdr.GetInt32(rdr.GetOrdinal("Id")),
-						Name = rdr.GetString(rdr.GetOrdinal("Name")),
-						CategoryTypeId = rdr.GetInt32(rdr.GetOrdinal("CategoryTypeId")),
-						FriendlyUrl = rdr.GetString(rdr.GetOrdinal("FriendlyUrl")),
-						ImageUrl = rdr.IsDBNull(rdr.GetOrdinal("ImageUrl")) ? null : rdr.GetString(rdr.GetOrdinal("ImageUrl")),
-						OfferText = rdr.IsDBNull(rdr.GetOrdinal("OfferText")) ? null : rdr.GetString(rdr.GetOrdinal("OfferText")),
-						MarketingText = rdr.IsDBNull(rdr.GetOrdinal("MarketingText")) ? null : rdr.GetString(rdr.GetOrdinal("MarketingText")),
-						ActionButtonText = rdr.IsDBNull(rdr.GetOrdinal("ActionButtonText")) ? null : rdr.GetString(rdr.GetOrdinal("ActionButtonText")),
-					};
-				}
-			}
-		}
-
-		con.Close();
-	}
-	return category;
-}
-151. Add the following line of code to BlazorCommerce.Data/CategoryController.cs: 
-[HttpGet]
-[Route("~/category/{friendlyUrl}")]
-[ProducesResponseType(StatusCodes.Status200OK)]
-[ProducesResponseType(StatusCodes.Status400BadRequest)]
-[ProducesResponseType(StatusCodes.Status404NotFound)]
-[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-public ActionResult<CategoryDto> Get(string friendlyUrl)
-{
-	if (string.IsNullOrWhiteSpace(friendlyUrl))
-	{
-		return BadRequest();
-	}
-	CategoryDto category = null;
-	try
-	{
-		category = _categoryRepository.Get(friendlyUrl);
-	}
-	catch
-	{
-		return new StatusCodeResult(StatusCodes.Status500InternalServerError);
-	}
-	if (category == null)
-	{
-		return NotFound();
-	}
-	return Ok(category);
-}
-152. In BlazorCommerce/Pages/Category.razor, just below the line that reads @inject AppState AppState
+96. Now to return specific category information on the category page. In BlazorCommerce/Pages/Category.razor, just below the line that
+ reads @inject AppState AppState
 add:
 @using System.Net.Http
 @inject HttpClient Http
-153. In the @code section of BlazorCommerce/Pages/Category.razor add a new private member, this will be used to populate the category details on the page:
+
+97. In the @code section of BlazorCommerce/Pages/Category.razor add a new private member, this will be used to populate the category
+ details on the page:
 private BlazorCommerce.Shared.CategoryDto _category;
-154. In the @code section of BlazorCommerce/Pages/Category.razor add a call to the BlazorCommerce API in the OnParametersSetAsync method to retrieve the category:
-protected override async Task OnParametersSetAsync() {
-	_category = await Http.GetFromJsonAsync<BlazorCommerce.Shared.CategoryDto>($"category/{friendlyCategoryUrl}");
-}
-155. Now that the category information has been retrieved, update the breadcrumb in BlazorCommerce/Pages/Category.razor by replacing the following code:
+
+98. In the @code section of BlazorCommerce/Pages/Category.razor add a call to the BlazorCommerce API in the OnParametersSetAsync method
+ to retrieve the category "19. Category.razor OnParametersSetAsync snippet.txt"
+
+99. Now that the category information has been retrieved, update the breadcrumb in BlazorCommerce/Pages/Category.razor by replacing
+ the following code:
 <ul class="bread-list">
 	<li><a href="index1.html">Home<i class="ti-arrow-right"></i></a></li>
 	<li class="active"><a href="blog-single.html">Shop List</a></li>
 </ul>
-with:
-<ul class="bread-list">
-	<li><a href="/">Home<i class="ti-arrow-right"></i></a></li>
-	@if (_category != null)
-	{
-	<li class="active"><a href="category/@_category.FriendlyUrl">@_category.Name</a></li>
-	}
-</ul>
+with "20. Category.razor Breadcrumb snippet.txt"
 
-Next to retrieve a categories list with cut down details
-156. In BlazorCommerce.Shared add a new class called CategoryMinDto.cs with the following code:
-namespace BlazorCommerce.Shared
-{
-    public class CategoryMinDto : IDataModel
-    {
-        public int Id {get;set;}
-
-        public string Name {get;set;}
-
-        public string FriendlyUrl {get;set;}
-    }
-}
-157. In BlazorCommerce.Data create a new class called CategoryMinRepository.cs with the following code:
-using System.Collections.Generic;
-using BlazorCommerce.Shared;
-using Microsoft.Extensions.Options;
-using Microsoft.Data.Sqlite;
-
-namespace BlazorCommerce.Data
-{
-    public class CategoryMinRepository : BaseRepository, IRepository<CategoryMinDto>
-    {
-        public CategoryMinRepository(IOptions<BlazorCommerce.Data.DatabaseOptions> databaseOptions) : base(databaseOptions) { }
-
-        public IEnumerable<CategoryMinDto> GetAll()
-        {
-            var categories = new List<CategoryMinDto>();
-            using (var con = new SqliteConnection(base.ConnectionString))
-            {
-                con.Open();
-
-                string stm = "SELECT Id, Name, FriendlyUrl FROM Categories;";
-
-                using (var cmd = new SqliteCommand(stm, con))
-                {
-                    using (var rdr = cmd.ExecuteReader())
-                    {
-                        while (rdr.Read())
-                        {
-                            var category = new CategoryMinDto()    
-                            {    
-                                Id = rdr.GetInt32(rdr.GetOrdinal("Id")),
-                                Name = rdr.GetString(rdr.GetOrdinal("Name")),
-                                FriendlyUrl = rdr.GetString(rdr.GetOrdinal("FriendlyUrl"))
-                            };
-                            categories.Add(category);
-                        }
-                    }
-                }
-
-                con.Close();
-            }
-            return categories;
-        }
-
-        public CategoryMinDto Get(string friendlyUrl)
-        {
-            CategoryMinDto category = null;
-                            
-            using (var con = new SqliteConnection(base.ConnectionString))
-            {
-                con.Open();
-
-                string stm = "SELECT Id, Name, FriendlyUrl FROM Categories WHERE FriendlyUrl = '" + friendlyUrl + "';";
-
-                using (var cmd = new SqliteCommand(stm, con))
-                {
-                    using (var rdr = cmd.ExecuteReader())
-                    {
-                        while (rdr.Read())
-                        {
-                            category = new CategoryMinDto()    
-                            {
-                                Id = rdr.GetInt32(rdr.GetOrdinal("Id")),
-                                Name = rdr.GetString(rdr.GetOrdinal("Name")),
-                                FriendlyUrl = rdr.GetString(rdr.GetOrdinal("FriendlyUrl"))
-                            };
-                        }
-                    }
-                }
-
-                con.Close();
-            }
-            return category;
-        }
-    }
-}
-158. In BlazorCommerce.Data/Startup.cs the new repository needs registering, after the line that reads services.AddScoped<BlazorCommerce.Data.IRepository<BlazorCommerce.Shared.CategoryDto>, CategoryRepository>(); add the following code:
-services.AddScoped<BlazorCommerce.Data.IRepository<BlazorCommerce.Shared.CategoryMinDto>, CategoryMinRepository>();
-159. In BlazorCommerce.Api/CategoryController.cs the new repository needs to be injected to do this add the following line of code:
-private readonly IRepository<CategoryMinDto> _categoryMinRepository;
-160. In BlazorCommerce.Api/CategoryController.cs adjust the constructor to read:
-public CategoryController(ILogger<CategoryController> logger, IRepository<CategoryDto> categoryRepository, IRepository<CategoryMinDto> categoryMinRepository)
-{
-	_logger = logger;
-	_categoryRepository = categoryRepository;
-	_categoryMinRepository = categoryMinRepository;
-}
-161. In BlazorCommerce.Api/CategoryController.cs add the new method:
-[HttpGet]
-[Route("~/categorymin")]
-[ProducesResponseType(StatusCodes.Status200OK)]
-[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-public ActionResult<IEnumerable<CategoryMinDto>> GetMin()
-{
-	IEnumerable<CategoryMinDto> categories;
-	try
-	{
-		categories = _categoryMinRepository.GetAll();
-	}
-	catch
-	{
-		return new StatusCodeResult(StatusCodes.Status500InternalServerError);
-	}
-	return Ok(categories);
-}
-162. In the @code section of BlazorCommerce/Pages/Category.razor add a new private member, this will be used to populate the categories filter on the left side of the page:
+100. Next to retrieve the sibling categories list with cut down details to populate the categories menu. In the @code section of
+ BlazorCommerce/Pages/Category.razor add a new private member, this will be used to populate the category menu:
 private IEnumerable<BlazorCommerce.Shared.CategoryMinDto> _minCategories;
-163. In the @code section of BlazorCommerce/Pages/Category.razor add a call to the BlazorCommerce API in the OnInitializedAsync method to retrieve the categories:
-protected override async Task OnInitializedAsync() {
-	_minCategories = await Http.GetFromJsonAsync<IEnumerable<BlazorCommerce.Shared.CategoryMinDto>>("categorymin");
-}
-164. In BlazorCommerce/Pages/Category.razor replace the categories list:
+
+101. In the @code section of BlazorCommerce/Pages/Category.razor add a call to the BlazorCommerce API in the OnInitializedAsync method
+ to retrieve the _minCategories sibling list "21. Category.razor OnInitializedAsync snippet.txt"
+
+102. In BlazorCommerce/Pages/Category.razor replace the categories list:
 <!-- Single Widget -->
 <div class="single-widget category">
 	<h3 class="title">Categories</h3>
@@ -1280,21 +456,11 @@ protected override async Task OnInitializedAsync() {
 	</ul>
 </div>
 <!--/ End Single Widget -->
-with:
-<!-- Single Widget -->
-<div class="single-widget category">
-	<h3 class="title">Categories</h3>
-	<ul class="categor-list">
-	@if (_minCategories != null && _minCategories.Any())
-	{
-		foreach (var minCategory in _minCategories)
-		{
-		<li><a href="category/@minCategory.FriendlyUrl">@minCategory.Name</a></li>
-		}
-	}
-	</ul>
-</div>
-<!--/ End Single Widget -->
+with "22. Category.razor Sibling minCategories snippet.txt"
+
+
+
+
 165. Next the current category needs to be highlighted in the categories filter on the left side of the page, change the line of code that has just been added from:
 <li><a href="category/@minCategory.FriendlyUrl">@minCategory.Name</a></li>
 to:
@@ -5904,6 +5070,11 @@ In a browser go to https://localhost:5001 and the index page should appear, navi
 
 
 
+https://www.freelogodesign.org
+https://webassembly.org/
+https://docs.microsoft.com/en-us/aspnet/core/blazor/?view=aspnetcore-5.0
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly
+https://blazor-university.com/components/render-trees/
 https://stackoverflow.com/questions/62954461/the-assembly-does-not-contain-a-public-invokable-method-with-jsinvokableattribu
 https://docs.microsoft.com/en-us/aspnet/core/blazor/components/lifecycle?view=aspnetcore-5.0
 https://www.syncfusion.com/faq/how-do-you-create-a-cookie-in-the-client-side-of-blazor

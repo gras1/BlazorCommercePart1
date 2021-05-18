@@ -1,0 +1,14 @@
+@page "/product/{friendlyProductUrl}"
+
+@inject AppState AppState
+
+
+@code {
+	[Parameter] public string friendlyProductUrl { get; set; }
+
+	public override async Task SetParametersAsync(ParameterView parameters)
+	{
+		AppState.SetDisplayCategoryMenuInHeaderNav(false);
+		await base.SetParametersAsync(parameters);
+	}
+}

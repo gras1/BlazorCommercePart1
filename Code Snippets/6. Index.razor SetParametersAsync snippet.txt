@@ -1,0 +1,7 @@
+@code {
+	public override async Task SetParametersAsync(ParameterView parameters)
+	{
+		AppState.SetDisplayCategoryMenuInHeaderNav(true);
+		await base.SetParametersAsync(parameters);
+	}
+}

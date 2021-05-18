@@ -1,0 +1,7 @@
+﻿                            @if (_minCategories != null && _minCategories.Any())
+                            {
+                                foreach (var minCategory in _minCategories)
+                                {
+                                    <li><NavLink href=@("category/" + minCategory.FriendlyUrl + "") Match="NavLinkMatch.All" ActiveClass="currentcategory">@minCategory.Name</NavLink></li>
+                                }
+                            }

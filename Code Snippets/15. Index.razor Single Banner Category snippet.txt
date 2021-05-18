@@ -1,0 +1,7 @@
+﻿<div class="row">
+	@if (_smallBannerCategories != null && _smallBannerCategories.Any())
+	{
+		foreach (var smallBannerCategory in _smallBannerCategories)
+		{
+			<!-- Single Banner  -->
+			<div class="col-lg-4 col-md-6 col-12">

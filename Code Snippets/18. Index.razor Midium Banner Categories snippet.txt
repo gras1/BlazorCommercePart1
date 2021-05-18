@@ -1,0 +1,6 @@
+﻿<img src="@midiumBannerCategory.ImageUrl" alt="#">
+<div class="content">
+	<p>@((MarkupString)DoPlaceholderReplacements(midiumBannerCategory.Name))</p>
+	<h3>@((MarkupString)DoPlaceholderReplacements(midiumBannerCategory.MarketingText))</h3>
+	<a href="category/@midiumBannerCategory.FriendlyUrl">@midiumBannerCategory.ActionButtonText</a>
+</div>

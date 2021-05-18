@@ -1,0 +1,3 @@
+﻿protected override async Task OnParametersSetAsync() {
+	_category = await Http.GetFromJsonAsync<BlazorCommerce.Shared.CategoryDto>($"category/{friendlyCategoryUrl}");
+}

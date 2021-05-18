@@ -1,0 +1,5 @@
+﻿<h1>@((MarkupString)DoPlaceholderReplacements(_heroCategory.OfferText))</h1>
+<p>@((MarkupString)DoPlaceholderReplacements(_heroCategory.MarketingText))</p>
+<div class="button">
+	<a href="category/@_heroCategory.FriendlyUrl" class="btn">@_heroCategory.ActionButtonText</a>
+</div>

@@ -1,0 +1,3 @@
+﻿    protected override async Task OnInitializedAsync() {
+	    _minCategories = await Http.GetFromJsonAsync<IEnumerable<BlazorCommerce.Shared.CategoryMinDto>>($"categorymin/siblingcategories/{friendlyCategoryUrl}");
+    }

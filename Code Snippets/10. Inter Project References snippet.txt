@@ -1,0 +1,3 @@
+﻿dotnet add ./BlazorCommerce/BlazorCommerce.csproj reference ./BlazorCommerce.Shared/BlazorCommerce.Shared.csproj
+dotnet add ./BlazorCommerce.Data/BlazorCommerce.Data.csproj reference ./BlazorCommerce.Shared/BlazorCommerce.Shared.csproj
+dotnet add ./BlazorCommerce.Api/BlazorCommerce.Api.csproj reference ./BlazorCommerce.Data/BlazorCommerce.Data.csproj ./BlazorCommerce.Shared/BlazorCommerce.Shared.csproj

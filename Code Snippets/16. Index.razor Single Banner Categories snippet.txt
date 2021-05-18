@@ -1,0 +1,6 @@
+﻿<img src="@smallBannerCategory.ImageUrl" alt="#">
+<div class="content">
+	<p>@((MarkupString)DoPlaceholderReplacements(smallBannerCategory.Name))</p>
+	<h3>@((MarkupString)DoPlaceholderReplacements(smallBannerCategory.MarketingText))</h3>
+	<a href="category/@smallBannerCategory.FriendlyUrl">@smallBannerCategory.ActionButtonText</a>
+</div>

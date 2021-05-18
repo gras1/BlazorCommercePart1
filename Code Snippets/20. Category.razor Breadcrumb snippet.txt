@@ -1,0 +1,7 @@
+﻿<ul class="bread-list">
+	<li><a href="/">Home<i class="ti-arrow-right"></i></a></li>
+	@if (_category != null)
+	{
+	<li class="active"><a href="category/@_category.FriendlyUrl">@_category.Name</a></li>
+	}
+</ul>

@@ -1,0 +1,6 @@
+@page "/category/{friendlyCategoryUrl}"
+
+@code {
+	[Parameter]
+	public string friendlyCategoryUrl { get; set; }
+}

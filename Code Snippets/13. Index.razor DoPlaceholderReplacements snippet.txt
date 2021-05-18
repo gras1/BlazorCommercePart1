@@ -1,0 +1,4 @@
+﻿protected string DoPlaceholderReplacements(string source)
+{
+	return source.Replace("__", "<br>").Replace("_-", "<span>").Replace("-_", "</span>");
+}

@@ -1,0 +1,4 @@
+﻿protected override async Task OnInitializedAsync() {
+	var categories = await Http.GetFromJsonAsync<BlazorCommerce.Shared.CategoryDto[]>("category/featuredcategories");
+	_heroCategory = categories.SingleOrDefault(cat => cat.CategoryType == 1);
+}

@@ -1,0 +1,20 @@
+@code {
+	private string GetMenuAreaContainerClass()
+	{
+		if (AppState.DisplayCategoryMenuInHeaderNav)
+        {
+            return "col-lg-9 ";
+        }
+		return string.Empty;
+	}
+
+	protected override void OnInitialized()
+    {
+        AppState.OnChange += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        AppState.OnChange -= StateHasChanged;
+    }
+}

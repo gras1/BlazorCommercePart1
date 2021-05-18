@@ -1,0 +1,5 @@
+﻿dotnet sln add ./BlazorCommerce/BlazorCommerce.csproj
+dotnet sln add ./BlazorCommerce.Api/BlazorCommerce.Api.csproj
+dotnet sln add ./BlazorCommerce.Data/BlazorCommerce.Data.csproj
+dotnet sln add ./BlazorCommerce.DbSetup/BlazorCommerce.DbSetup.csproj
+dotnet sln add ./BlazorCommerce.Shared/BlazorCommerce.Shared.csproj
