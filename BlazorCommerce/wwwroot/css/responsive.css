@@ -403,7 +403,7 @@ Version:1.0
 	display:none;
 }
 .slicknav_nav li:hover a{
-	color:#5C2D91;
+	color:#F7941D;
 	background:transparent;
 }
 .slicknav_nav li:hover{
@@ -417,7 +417,7 @@ Version:1.0
 	background:transparent;
 }
 .slicknav_nav li .dropdown li a:hover{
-	color:#5C2D91;
+	color:#F7941D;
 	background:transparent;
 }
 .slicknav_nav li .slicknav_item{
@@ -433,12 +433,12 @@ Version:1.0
 	padding-bottom:0px;
 }
 .slicknav_menu .slicknav_icon-bar {
-	background-color: #5C2D91;
+	background-color: #F7941D;
 	box-shadow: none;
 	text-shadow: none;
 }
 .slicknav_nav .slicknav_arrow{
-	color:#5C2D91;
+	color:#F7941D;
 }
 .slicknav_menu .slicknav_icon-bar {
 	display: block;
@@ -884,7 +884,7 @@ Version:1.0
 	width: 50%;
 	height: 100%;
 	border-bottom: 1px solid #e6ebee;
-	background: #5C2D91;
+	background: #F7941D;
 	color: #fff;
 	border: none;
 }
@@ -1116,7 +1116,7 @@ Version:1.0
 	display:none;
 }
 .slicknav_nav li:hover a{
-	color:#5C2D91;
+	color:#F7941D;
 	background:transparent;
 }
 .slicknav_nav li:hover{
@@ -1130,7 +1130,7 @@ Version:1.0
 	background:transparent;
 }
 .slicknav_nav li .dropdown li a:hover{
-	color:#5C2D91;
+	color:#F7941D;
 	background:transparent;
 }
 .slicknav_nav li .slicknav_item{
@@ -1146,12 +1146,12 @@ Version:1.0
 	padding-bottom:0px;
 }
 .slicknav_menu .slicknav_icon-bar {
-	background-color: #5C2D91;
+	background-color: #F7941D;
 	box-shadow: none;
 	text-shadow: none;
 }
 .slicknav_nav .slicknav_arrow{
-	color:#5C2D91;
+	color:#F7941D;
 }
 .slicknav_menu .slicknav_icon-bar {
 	display: block;
